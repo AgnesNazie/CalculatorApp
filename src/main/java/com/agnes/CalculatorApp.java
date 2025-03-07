@@ -28,34 +28,47 @@ public class CalculatorApp {
                 break;
             }
 
+            System.out.println("How many numbers do you want to calculate?");
+            int count = scanner.nextInt();
 
-            System.out.println("Enter first number: ");
+            double[] numbers = new double[count];
 
-            double number1 = scanner.nextDouble();
-            System.out.println("Enter second number: ");
-            double number2 = scanner.nextDouble();
-            double result = 0;
+            System.out.println("Enter the numbers: ");
+            for (int i = 0; i < count; i++) {
+                numbers[i] = scanner.nextDouble();
+            }
+            double result = numbers[0];
+
             switch (choice) {
                 case 1:
-                    result = number1 + number2;
-                    System.out.println("Results: " + result);
+                    for (int i = 1; i < count; i++) {
+                        result += numbers[i];
+                    }
+                    System.out.println("Result: " + result);
                     break;
                 case 2:
-                    result = number1 - number2;
-                    System.out.println("Results: " + result);
+                    for (int i = 1; i < count; i++) {
+                        result -= numbers[i];
+                    }
+                    System.out.println("Result: " + result);
                     break;
                 case 3:
-                    result = number1 * number2;
-                    System.out.println("Results: " + result);
+                    for (int i = 1; i < count; i++) {
+                        result *= numbers[i];
+                    }
+                    System.out.println("Result: " + result);
                     break;
                 case 4:
-                    if (number2 != 0) {
-                        result = number1 / number2;
-                        System.out.println("Results: " + result);
-                    } else {
-                        System.out.println("Error! Division by Zero.");
+                    for (int i = 1; i < count; i++) {
+                        if (numbers[i] == 0) {
+                            System.out.println("Error! Division by zero.");
+                            return;
+                        }
+                        result /= numbers[i];
                     }
+                    System.out.println("Result: " + result);
                     break;
+
                 default:
                     System.out.println("Wrong choice! Please try again.");
             }
